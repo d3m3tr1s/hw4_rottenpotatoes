@@ -8,13 +8,13 @@ describe MoviesController  do
 		end	
 		it 'should select the Found Results with same Director template for rendering' do
      		Movie.stub(:find_same_director)
-      		get :same_director, {:id => 1}
+     		get :same_director, {:id => 1}
       		response.should render_template('same_director')
 		end	
    		it 'should make the Found Results with same Director available to that template' do
 			fake_results = [mock('Movie'), mock('Movie')]
 			Movie.stub(:find_same_director).and_return(fake_results)
-			get :same_director, {:id => 1}
+			get :same_director, {:id => 1}			
 			# look for controller method to assign @movies
 			assigns(:movies).should == fake_results
 	    end		
